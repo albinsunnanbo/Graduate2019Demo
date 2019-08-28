@@ -1,0 +1,20 @@
+﻿@model CustomerModel
+@inject GraduateWeb.Services.RandomGreetingService rngGreeting
+@{
+    ViewData["Title"] = "Home Page";
+}
+@using (var form = Html.BeginForm())
+{
+    <h1>@rngGreeting.SayHi()</h1>
+    <div>
+        @Html.LabelFor(m => m.Name):
+        @Html.EditorFor(m => m.Name)
+    </div>
+    <div>
+        @Html.LabelFor(m => m.Gender):
+        @Html.DropDownListFor(m => m.Gender, Html.GetEnumSelectList<Gender>())
+    </div>
+    <div>
+        <button type="submit">Klicka här och vinn en bil!</button>
+    </div>
+}
